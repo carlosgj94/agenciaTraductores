@@ -19,7 +19,7 @@ class cEmpleado
     private:
         string nombre;
         int numero_idiomas;
-        string idiomas [4];
+        string idiomas [5];
         bool libre;
 };
 

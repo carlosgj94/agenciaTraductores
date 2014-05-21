@@ -6,9 +6,16 @@ using namespace std;
 class cServicio
 {
     public:
-        cServicio();
+    	cServicio();
+        string getIdiomaOrigen();
+        string getIdiomaDestino();
+        virtual void setServicio(cEmpleado *)=0;
+        virtual void getEmpleados()=0;
+    
     protected:
-    private:
+    	string idiomaOrigen;
+    	string idiomaDestino;
+    	
 };
 
 #endif // CSERVICIO_H

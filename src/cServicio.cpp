@@ -2,5 +2,13 @@
 
 cServicio::cServicio()
 {
-    //ctor
+    idiomaOrigen='';
+    idiomaDestino='';
+}
+
+string cServicio::getIdiomaOrigen(){
+	return idiomaOrigen;
+}
+string cServicio::getIdiomaDestino(){
+	return idiomaDestino;
 }
