@@ -11,6 +11,15 @@ cEmpleado::cEmpleado()
     }
     libre= true;
 }
+cEmpleado::~cEmpleado(){
+    nombre =" ";
+    numero_idiomas=0;
+    int i;
+        for(i=0; i<5; i++){
+        idiomas[i]=" ";
+    }
+    libre= false;
+}
 cEmpleado::cEmpleado(string name,int languajes_number, string languajes[4], bool free ){
     nombre=name;
     numero_idiomas = languajes_number;

@@ -9,7 +9,7 @@ class cAgencia
 {
     public:
         cAgencia();
-        void contratarEmpleados(string);//ESTE STRING ES PARA QUE SE PUEDA DEFINIR DONDE ESTÁ EL ARCHIVO DE DATOS
+        void contratarEmpleados();//ESTE STRING ES PARA QUE SE PUEDA DEFINIR DONDE ESTÁ EL ARCHIVO DE DATOS
         void despedirEmpleado();
         //Propongo un metodo para hacer ERE's, que esta muy de moda ultimamente
         void contratarServicio(); //Si no puede, lo rescinde

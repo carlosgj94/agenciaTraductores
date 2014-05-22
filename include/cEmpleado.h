@@ -8,7 +8,7 @@ class cEmpleado
 {
     public:
         cEmpleado();
-        cEmpleado(string, int, string[4], bool);
+        cEmpleado(string, int, string[5], bool);
         ~cEmpleado();
         string getNombre();
         int getNumeroIdiomas();

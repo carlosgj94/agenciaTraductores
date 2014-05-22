@@ -2,8 +2,8 @@
 
 cServicio::cServicio()
 {
-    idiomaOrigen='';
-    idiomaDestino='';
+    idiomaOrigen=' ';
+    idiomaDestino=' ';
 }
 
 string cServicio::getIdiomaOrigen(){

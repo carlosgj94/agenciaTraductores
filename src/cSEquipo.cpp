@@ -1,22 +1,26 @@
 #include "cSEquipo.h"
+#include "cServicio.h"
 
 cSEquipo::cSEquipo()
 {
     for(int i =0;i<3;i++)
-    	empleado[i]=NULL;   
+    	empleado[i]=NULL;
 }
 cSEquipo::cSEquipo(string idiomaO, string idiomaD){
 	for(int i =0;i<3;i++)
-    	empleado[i]=NULL; 
+    	empleado[i]=NULL;
     idiomaOrigen = idiomaO;
     idiomaDestino= idiomaD;
 }
 
-void cSEquipo::setServicio(cEmpleado * traductor){
-	int i=0;
-	for (i;i<3;i++){
-		empleado[i]= *(traductor+i);
-		*(traductor+i)->setLibre(false);
+
+void cSEquipo::setServicio(cEmpleado * traductor[3]){
+	int i;
+	for (i=0;i<3;i++){
+            if(traductor[i]){
+            empleado[i]= *(traductor+i);
+            empleado[i]->setLibre(false);
+        }
 	}
 }
 
@@ -25,17 +29,17 @@ void cSEquipo::getEmpleados(){
 	string nombre;
 	int numeroIdiomas;
 	string* idiomas;
-	for (i; i<3;i++){
-		nombre=empleado->getNombre();
-		numeroIdiomas = empleado->getNumeroIdiomas();
-		idiomas = empleado->getIdiomas();
+	for (i=0; i<3;i++){
+		nombre=empleado[i]->getNombre();
+		numeroIdiomas = empleado[i]->getNumeroIdiomas();
+		idiomas = empleado[i]->getIdiomas();
 
 		cout << "Nombre: "<<nombre<<endl;
 		cout << "Numero de idiomas: "<< numeroIdiomas<<endl;
 		int i=0;
-		for (i; i<5;i++){
+		for (i=0; i<5;i++){
 			cout<<"Idiomas que sabe: "<<endl;
-			if(*(idiomas+i))
+			if(*(idiomas+i)!= " " )
 				cout<<*(idiomas+i)<<endl;
 			else
 				i=5;

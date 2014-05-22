@@ -1,5 +1,5 @@
 #include "cSUnipersonal.h"
-
+#include "cServicio.h"
 cSUnipersonal::cSUnipersonal()
 {
     empleado=NULL;
@@ -9,9 +9,9 @@ cSUnipersonal::cSUnipersonal(string idiomaO,string idiomaD){
 	idiomaOrigen = idiomaO;
 	idiomaDestino = idiomaD;
 }
-void cSUnipersonal::setServicio(cEmpleado * traductor){
-	empleado = traductor;
-	traductor->setLibre(false);
+void cSUnipersonal::setServicio(cEmpleado * traductor[]){
+	empleado = traductor[0];
+	traductor[0]->setLibre(false);
 }
 
 void cSUnipersonal::getEmpleados(){
@@ -22,9 +22,9 @@ void cSUnipersonal::getEmpleados(){
 	cout << "Nombre: "<<nombre<<endl;
 	cout << "Numero de idiomas: "<< numeroIdiomas<<endl;
 	int i=0;
-	for (i; i<5;i++){
+	for (i=0; i<5;i++){
 		cout<<"Idiomas que sabe: "<<endl;
-		if(*(idiomas+i))
+		if(*(idiomas+i)!=" ")
 			cout<<*(idiomas+i)<<endl;
 		else
 			i=5;
