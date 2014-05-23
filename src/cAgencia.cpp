@@ -30,12 +30,17 @@ void cAgencia::contratarEmpleados(){
     {
         fich>>nEmpleados;
         while (j<nEmpleados){
+            int k;
+            for(k=0;k<5;k++){
+                idiomas[k]=' ';
+            }
             fich>>nombre>>nIdiomas;
             if (nIdiomas!=0) {
                 do {
                     fich>>idiomas[i];
                     i++;
                 }while (i<nIdiomas);
+                i=0;
             }
             array_empleados[j]= new cEmpleado(nombre,nIdiomas,idiomas, false);
             j++;
@@ -54,7 +59,7 @@ void cAgencia::showArrayEmpleados(){
         else{
             cout<<i<<".:\t ";
             cout<<"Nombre: "<<array_empleados[i]->getNombre()<<endl;
-            cout<<"Numero de idiomas: "<< array_empleados[i]->getNumeroIdiomas();
+            cout<<"Numero de idiomas: "<< array_empleados[i]->getNumeroIdiomas()<<endl;
             idiomas= array_empleados[i]->getIdiomas();
             cout<<"Idiomas: "<<endl;
             for (j=0; j<5;j++){
@@ -82,7 +87,7 @@ void cAgencia::showArrayServicios(){
 }
 
 void cAgencia::contratarServicio(){
-    int i=0;
+    int i;
     string idiomaOrigen;
     string idiomaDestino;
     cout<<"Elige idioma origen: "<<endl;
@@ -91,12 +96,18 @@ void cAgencia::contratarServicio(){
     cin >> idiomaDestino;
     bool creado=false;
     for(i=0;i<100;i++){
+        cout<<i<<endl;
+        if(array_empleados[i]){
+            i=100;
+        }
         if(array_empleados[i]->getLibre()==true)
             if(array_empleados[i]->conoceIdioma(idiomaOrigen)==true)
                 if(array_empleados[i]->conoceIdioma(idiomaDestino)==true){
                     int j=0;
                     for(j=0;j<10;j++){
-                        if(array_servicios[j]==NULL){
+                        if(array_servicios[j]){
+                            cout << "Equipo unipersonal creado."<<endl;
+                            cout << "Servicio creado"<<endl;
                             cServicio * unipersonal=new cSUnipersonal(idiomaOrigen, idiomaDestino);
                             cEmpleado * empleado[1] ;
                             empleado[0]= array_empleados[i];
@@ -201,12 +212,12 @@ bool encontrado= false;
             encontrado=true;
         }
     if (encontrado==true){
-        int j;
-        for (j=i+1; j<100-i;j++){
+        int j=i+1;
+        while (j<100-i && array_empleados[j]){
             array_empleados[i]=array_empleados[j];
             i++;
+            j++;
         }
-        array_empleados[j]=NULL;
     }
     }
     if(encontrado==false)
